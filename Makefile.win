@@ -1,0 +1,28 @@
+# Nmake file - Windows version
+# Use 'nmake -f Makefile.win'
+#
+# THIS HAS NEVER BEEN TESTED
+# Some modification might be required.
+
+NODEBUG=1
+
+!include <ntwin32.mak>
+
+INCS = /Isubmodules/libmseed 
+OPTS = -D_CRT_SECURE_NO_WARNINGS
+LIBS = submodules/libmseed/libmseed.lib
+BINS = miniseed2text.exe
+
+cflags = $(cflags) -DWIN32
+
+all: $(BINS)
+
+miniseed2text.exe: miniseed2text.obj
+	link.exe /nologo /out:miniseed2text.exe $(LIBS) miniseed2text.obj
+
+.c.obj:
+	$(cc) /nologo $(cflags) $(cdebug) $(cvarsmt) $(tflags) $(INCS) $(OPTS) $<
+
+# Clean-up directives
+clean:
+	-del a.out core *.o *.obj *% *~ $(BINS)
