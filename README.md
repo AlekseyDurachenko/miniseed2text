@@ -1,15 +1,45 @@
 # miniseed2text
-Converting the miniseed file to the textual file
+Converting the miniseed file into the textual file
 
-# Usage
+## Output textual format
+```
+NET|STA|CHAN|LOCATION|HPTIME|VALUE\n
+```
+where:
+* NET - network name
+* STA - station name
+* CHAN - channel name
+* LOCATION - location code
+* TIME - unixtime with microsecond precision
+* VALUE - int32, float or double value
 
+## Usage
 ```bash
-miniseed2txt input.mseed output.txt
+miniseed2text Ver 0.1.0 Converting the miniseed file into the textual file
+Developer(s):
+    2015 Durachenko Aleksey V. <durachenko.aleksey@gmail.com>
+Usage:
+    miniseed2text input.mseed output.txt
+Libraries:
+    libmseed 2.13
 ```
 
-# textual format
-```
-NET_STA_CHAN_LOCATION_HPTIME_VALUE\n
+where:
+* input.mseed - input miniseed file
+* output.txt - output textual file
+
+## Compiling
+
+### Linux
+```bash
+git clone https://github.com/AlekseyDurachenko/miniseed2text.git miniseed2txt
+cd miniseed2txt
+git submodule init
+git submodule update
+cd submodules/libmseed
+make
+cd ../..
+make
 ```
 
-where "_" is space
+
