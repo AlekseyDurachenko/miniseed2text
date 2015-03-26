@@ -30,7 +30,7 @@ where:
 
 ## Compiling
 
-### Linux
+### GNU/Linux
 ```bash
 git clone https://github.com/AlekseyDurachenko/miniseed2text.git miniseed2txt
 cd miniseed2txt
