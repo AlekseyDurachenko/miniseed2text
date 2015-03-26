@@ -10,7 +10,7 @@ where:
 * STA - station name
 * CHAN - channel name
 * LOCATION - location code
-* HPTIME - unixtime with microsecond precision
+* HPTIME - microseconds since 1 jan 1970
 * VALUE - int32, float or double value
 
 ## Usage
