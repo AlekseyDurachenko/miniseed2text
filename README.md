@@ -34,8 +34,7 @@ where:
 ```bash
 git clone https://github.com/AlekseyDurachenko/miniseed2text.git miniseed2txt
 cd miniseed2txt
-git submodule init
-git submodule update
+git submodule update --init --recursive
 cd submodules/libmseed
 make
 cd ../..
