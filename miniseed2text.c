@@ -17,6 +17,7 @@
 #include <inttypes.h>
 #include <libmseed.h>
 
+#define DELIMITER "|"
 
 void usage()
 {
@@ -58,11 +59,12 @@ int convert(const char *inputfile, const char *outputfile)
 
         for (int64_t i = 0; i < msr->numsamples; ++i)
         {
-            fprintf(output, "%s|%s|%s|%s|", msr->network, msr->station,
+            fprintf(output, "%s"DELIMITER"%s"DELIMITER"%s" DELIMITER
+                   "%s"DELIMITER, msr->network, msr->station,
                    msr->channel, msr->location);
 
             int64_t time = (int64_t)(msr->starttime + 1000000.0*i/msr->samprate);
-            fprintf(output, "%"PRId64"|", time);
+            fprintf(output, "%" PRId64 DELIMITER, time);
 
             if (msr->sampletype == 'i')
                 fprintf(output, "%i", data_i[i]);
